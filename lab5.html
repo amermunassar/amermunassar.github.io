@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopEasy – Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid #ccc;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 7px;
+      margin-bottom: 15px;
+      border: 1px solid #aaa;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 9px;
+      background-color: #333;
+      color: white;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .success {
+      color: green;
+      border: 1px solid green;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .error {
+      color: red;
+      border: 1px solid red;
+      padding: 10px;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>ShopEasy – Register</h2>
+
+    <label>First Name</label>
+    <input type="text" id="firstName" />
+
+    <label>Last Name</label>
+    <input type="text" id="lastName" />
+
+    <label>Email Address</label>
+    <input type="email" id="email" />
+
+    <label>Password (must contain ! or ?)</label>
+    <input type="password" id="password" />
+
+    <label>Date of Birth</label>
+    <input type="date" id="dob" />
+
+    <button onclick="register()">Register</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function register() {
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName  = document.getElementById("lastName").value.trim();
+      const email     = document.getElementById("email").value.trim();
+      const password  = document.getElementById("password").value;
+      const dob       = document.getElementById("dob").value;
+
+      const resultDiv = document.getElementById("result");
+
+      if (!firstName || !lastName || !email || !password || !dob) {
+        resultDiv.innerHTML = `<div class="error"><strong>Registration Failed.</strong> All fields are required.</div>`;
+        return;
+      }
+
+      if (!password.includes("!") && !password.includes("?")) {
+        resultDiv.innerHTML = `<div class="error"><strong>Registration Failed.</strong> Password must contain ! or ?.</div>`;
+        return;
+      }
+
+      const user = {
+        firstName: firstName,
+        lastName:  lastName,
+        email:     email,
+        password:  "*".repeat(password.length),
+        dob:       dob
+      };
+
+      resultDiv.innerHTML = `
+        <div class="success"><strong>Registration Successful!</strong></div>
+        <div class="info">
+          <p><strong>First Name:</strong> ${user.firstName}</p>
+          <p><strong>Last Name:</strong> ${user.lastName}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Password:</strong> ${user.password}</p>
+          <p><strong>Date of Birth:</strong> ${user.dob}</p>
+        </div>`;
+    }
+  </script>
+
+</body>
+</html>
