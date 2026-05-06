@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chess.com Lookup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar bg-success mb-4">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold" href="index.html">Chess.com Lookup</a>
+      <a href="player.html" class="btn btn-light btn-sm">Search a Player</a>
+    </div>
+  </nav>
+
+  <div class="container pb-5">
+
+    <div class="mb-4">
+      <h1 class="mb-1">Top Players</h1>
+      <p class="text-muted">Live leaderboards from Chess.com</p>
+    </div>
+
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label mb-1">Category</label>
+            <select id="category" class="form-select" onchange="loadLeaderboard()">
+              <option value="live_blitz">Blitz</option>
+              <option value="live_bullet">Bullet</option>
+              <option value="live_rapid">Rapid</option>
+              <option value="daily">Daily</option>
+            </select>
+          </div>
+          <div class="col-md-8">
+            <label class="form-label mb-1">Filter by username</label>
+            <input type="text" id="filter" class="form-control" placeholder="Type to filter..." oninput="showPage()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
