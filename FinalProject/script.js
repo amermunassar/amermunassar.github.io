@@ -47,9 +47,15 @@ function showPage() {
   let html = '<div class="list-group shadow-sm mb-3">';
   for (let i = start; i < end; i++) {
     let p = filtered[i];
-    html += '<a href="player.html?username=' + p.username + '" class="list-group-item list-group-item-action d-flex justify-content-between">';
-    html += '<span>#' + p.rank + ' - ' + p.username + '</span>';
-    html += '<span class="badge bg-secondary">' + p.score + '</span>';
+    let avatar = p.avatar ? p.avatar : 'https://www.chess.com/bundles/web/images/user-image.svg';
+
+    html += '<a href="player.html?username=' + p.username + '" class="list-group-item player-row d-flex align-items-center gap-3">';
+    html += '<div class="rank-circle">' + p.rank + '</div>';
+    html += '<img src="' + avatar + '" class="player-pfp">';
+    html += '<div class="flex-grow-1">';
+    html += '<div class="fw-bold fs-5">' + p.username + '</div>';
+    html += '<div class="text-muted small">Elo: ' + p.score + '</div>';
+    html += '</div>';
     html += '</a>';
   }
   html += '</div>';
