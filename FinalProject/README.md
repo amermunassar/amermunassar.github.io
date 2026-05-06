@@ -1,4 +1,4 @@
-# Chess.com Lookup
+# Chess Tracker
 
 A simple web app that lets you browse top Chess.com players and look up any player's profile and ratings.
 
